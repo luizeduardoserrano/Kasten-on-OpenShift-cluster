@@ -20,7 +20,7 @@ echo "k10 preflight checks"
 curl https://docs.kasten.io/tools/k10_primer.sh | bash
 
 echo "install Kasten K10"
-helm install k10 kasten/k10 --namespace=kasten-io --set scc.create=true --set route.enabled=true --set route.path="/k10" --set auth.tokenAuth.enabled=true --set injectKanisterSidecar.enabled=true --set-string injectKanisterSidecar.namespaceSelector.matchLabels.k10/injectKanisterSidecar=true
+helm install k10 kasten/k10 --namespace=kasten-io --set scc.create=true --set route.enabled=true --set route.path="/k10" --set auth.tokenAuth.enabled=true
 
 echo "wait 60 seconds for the K10 pod deployment"
 sleep 60
@@ -38,3 +38,4 @@ kubectl get secret $sa_secret --namespace kasten-io -ojsonpath="{.data.token}{'\
 
 echo "“port forward” to access the K10 dashboard"
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
+
