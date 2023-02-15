@@ -39,4 +39,3 @@ kubectl get secret $sa_secret --namespace kasten-io -ojsonpath="{.data.token}{'\
 echo "port forward” to access the K10 dashboard"
 kubectl --namespace kasten-io port-forward service/gateway 8080:8000
 
-echo "end of the script"
